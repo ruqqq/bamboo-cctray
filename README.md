@@ -5,7 +5,7 @@ Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in G
 ## Usage
 1. Download latest builds for your platform from Actions tab (e.g. https://github.com/ruqqq/bamboo-cctray/actions/runs/893230883)
 2. Create `bamboo.yml`:
-   ```yaml
+```yaml
   - bamboo1:
       url: https://some-bamboo.com
       basic_auth:
@@ -22,8 +22,7 @@ Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in G
         password: password
       projects:
         - PROJECT1
-
-   ```
+```
 3. Run `bamboo-cctray bamboo.yml` from the extracted archive in step 1
 
 ## TODO
