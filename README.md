@@ -24,6 +24,7 @@ Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in G
         - PROJECT1
 ```
 3. Run `bamboo-cctray bamboo.yml` from the extracted archive in step 1
+4. Open browser to `http://localhost:7000/dashboard/cctray.xml`
 
 ## TODO
 - Add tests
