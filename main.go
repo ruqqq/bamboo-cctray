@@ -16,6 +16,7 @@ var cacheValue []byte = nil
 
 func cctrayHandler(w http.ResponseWriter, req *http.Request) {
 	if cacheValue == nil || lastCacheTime.Add(CACHE_EXPIRY_DURATION).Before(time.Now()) {
+		cacheValue = nil
 		log.Println("Retrieving from Bamboo")
 		result, err := getCcTrayProjects(bambooConfigFilename)
 		if err != nil {
