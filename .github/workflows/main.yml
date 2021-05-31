@@ -20,3 +20,7 @@ jobs:
             name: 'bamboo-cctray'
             compress: 'true'
             dest: 'dist'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: binaries
+          path: dist/**/*
