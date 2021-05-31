@@ -22,5 +22,13 @@ jobs:
             dest: 'dist'
       - uses: actions/upload-artifact@v2
         with:
-          name: binaries
-          path: dist/**/*
+          name: windows-amd64
+          path: dist/**/*windows-amd64.tar.gz
+      - uses: actions/upload-artifact@v2
+        with:
+          name: linux-amd64
+          path: dist/**/*linux-amd64.tar.gz
+      - uses: actions/upload-artifact@v2
+        with:
+          name: darwin-amd64
+          path: dist/**/*darwin-amd64.tar.gz
