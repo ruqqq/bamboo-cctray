@@ -1,6 +1,6 @@
 # bamboo-cctray
 
-Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in Golang for the CPU and memory conscious people.
+Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in Golang to enable easy running on cross platform.
 
 ## Usage
 1. Download latest builds for your platform from Actions tab (e.g. https://github.com/ruqqq/bamboo-cctray/actions/runs/893230883)
