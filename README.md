@@ -3,7 +3,7 @@
 Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in Golang to enable easy running on cross platform.
 
 ## Usage
-1. Download latest builds for your platform from Actions tab (e.g. https://github.com/ruqqq/bamboo-cctray/actions/runs/893230883)
+1. Download latest builds for your platform from Actions tab (e.g. https://github.com/ruqqq/bamboo-cctray/actions/runs/894236499)
 2. Create `bamboo.yml`:
 ```yaml
   - bamboo1:
