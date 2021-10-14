@@ -30,3 +30,4 @@ Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in G
 - Add tests
 - Support running server on different port
 - Remove dependency on go-bamboo
+- Publish release (artifacts expires!)
