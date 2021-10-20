@@ -32,3 +32,13 @@ jobs:
         with:
           name: darwin-amd64
           path: dist/**/*darwin-amd64.tar.gz
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            dist/**/*windows-amd64.tar.gz
+            dist/**/*linux-amd64.tar.gz
+            dist/**/*darwin-amd64.tar.gz
