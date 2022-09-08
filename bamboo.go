@@ -17,9 +17,9 @@ type BambooConfig struct {
 		Username string
 		Password string
 	} `yaml:"basic_auth"`
-	Token     string   `yaml:"token"`
-	BuildKeys []string `yaml:"build_keys"`
-	Projects  []string
+	PersonalAccessToken string   `yaml:"personal_access_token"`
+	BuildKeys           []string `yaml:"build_keys"`
+	Projects            []string
 }
 
 type BambooClient struct {
@@ -177,8 +177,8 @@ func createBambooClients(configFilename string) (map[string]*BambooClient, error
 		if config.BasicAuth.Password != "" {
 			client = bamboo.NewSimpleClient(retryClient.StandardClient(), config.BasicAuth.Username, config.BasicAuth.Password)
 		} else {
-      client = bamboo.NewClient(retryClient.StandardClient(), &bamboo.BearerTokenConfigurer{Token: config.Token})
-    }
+			client = bamboo.NewClient(retryClient.StandardClient(), &bamboo.BearerTokenConfigurer{Token: config.PersonalAccessToken})
+		}
 		client.SetURL(config.Url)
 		clients[name] = &BambooClient{
 			Client: client,

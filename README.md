@@ -8,7 +8,7 @@ Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in G
 ```yaml
   - bamboo1:
       url: https://some-bamboo.com
-      basic_auth:
+      basic_auth: # username/password auth
         username: user
         password: password
       build_keys:
@@ -17,9 +17,7 @@ Inspired by https://github.com/chadlwilson/bamboo_cctray_proxy. But written in G
 
   - bamboo2:
       url: https://some-bamboo.com
-      basic_auth:
-        username: user
-        password: password
+      personal_access_token: abcdef # PAT based auth
       projects:
         - PROJECT1
 ```
