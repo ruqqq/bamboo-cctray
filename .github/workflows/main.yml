@@ -15,19 +15,11 @@ jobs:
       - name: Generate build files
         uses: thatisuday/go-cross-build@v1
         with:
-            platforms: 'linux/amd64, darwin/amd64, darwin/arm64, windows/amd64'
+            platforms: 'darwin/amd64, darwin/arm64'
             package: ''
             name: 'bamboo-cctray'
             compress: 'true'
             dest: 'dist'
-      - uses: actions/upload-artifact@v2
-        with:
-          name: windows-amd64
-          path: dist/**/*windows-amd64.tar.gz
-      - uses: actions/upload-artifact@v2
-        with:
-          name: linux-amd64
-          path: dist/**/*linux-amd64.tar.gz
       - uses: actions/upload-artifact@v2
         with:
           name: darwin-amd64
