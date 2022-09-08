@@ -17,6 +17,7 @@ type BambooConfig struct {
 		Username string
 		Password string
 	} `yaml:"basic_auth"`
+  Token string `yaml:"token"`
 	BuildKeys []string `yaml:"build_keys"`
 	Projects  []string
 }
@@ -172,7 +173,11 @@ func createBambooClients(configFilename string) (map[string]*BambooClient, error
 		retryClient := retryablehttp.NewClient()
 		retryClient.RetryMax = 2
 		retryClient.RetryWaitMin = time.Millisecond * 100
-		client := bamboo.NewSimpleClient(retryClient.StandardClient(), config.BasicAuth.Username, config.BasicAuth.Password)
+    var client *bamboo.Client
+    if config.BasicAuth.Password != "" {
+      client = bamboo.NewSimpleClient(retryClient.StandardClient(), config.BasicAuth.Username, config.BasicAuth.Password)
+    }
+    client = bamboo.NewClient(retryClient.StandardClient(), &bamboo.BearerTokenConfigurer{Token: config.Token})
 		client.SetURL(config.Url)
 		clients[name] = &BambooClient{
 			Client: client,
