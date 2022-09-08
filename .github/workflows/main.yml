@@ -18,7 +18,7 @@ jobs:
           check-latest: true
           cache: true
       - run: GOARCH=amd64 GOOS=linux go build -o bamboo-cctray-linux-amd64 .
-      - run: GOARCH=arm64 GOOS=linux go build -o bamboo-cctray-linux-amd64 .
+      - run: GOARCH=arm64 GOOS=linux go build -o bamboo-cctray-linux-arm64 .
       - run: GOARCH=amd64 GOOS=windows go build -o bamboo-cctray-windows-amd64 .
       - run: GOARCH=amd64 GOOS=darwin go build -o bamboo-cctray-darwin-amd64 .
       - run: GOARCH=arm64 GOOS=darwin go build -o bamboo-cctray-darwin-arm64 .
