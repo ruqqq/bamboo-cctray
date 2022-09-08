@@ -176,8 +176,9 @@ func createBambooClients(configFilename string) (map[string]*BambooClient, error
 		var client *bamboo.Client
 		if config.BasicAuth.Password != "" {
 			client = bamboo.NewSimpleClient(retryClient.StandardClient(), config.BasicAuth.Username, config.BasicAuth.Password)
-		}
-		client = bamboo.NewClient(retryClient.StandardClient(), &bamboo.BearerTokenConfigurer{Token: config.Token})
+		} else {
+      client = bamboo.NewClient(retryClient.StandardClient(), &bamboo.BearerTokenConfigurer{Token: config.Token})
+    }
 		client.SetURL(config.Url)
 		clients[name] = &BambooClient{
 			Client: client,
