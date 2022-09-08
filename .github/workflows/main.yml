@@ -12,30 +12,31 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Generate build files
-        uses: thatisuday/go-cross-build@v1
-        with:
-            platforms: 'linux/amd64, darwin/amd64, darwin/arm64, windows/amd64'
-            package: ''
-            name: 'bamboo-cctray'
-            compress: 'true'
-            dest: 'dist'
+      - uses: actions/setup-go@v3
+        with: 
+          go-version: '1.17'
+          check-latest: true
+          cache: true
+      - run: GOARCH=amd64 GOOS=linux go build -o bamboo-cctray-linux-amd64 .
+      - run: GOARCH=amd64 GOOS=windows go build -o bamboo-cctray-windows-amd64 .
+      - run: GOARCH=amd64 GOOS=darwin go build -o bamboo-cctray-darwin-amd64 .
+      - run: GOARCH=arm64 GOOS=darwin go build -o bamboo-cctray-darwin-arm64 .
       - uses: actions/upload-artifact@v2
         with:
-          name: windows-amd64
-          path: dist/**/*windows-amd64.tar.gz
+          name: bamboo-cctray-windows-amd64
+          path: bamboo-cctray-windows-amd64
       - uses: actions/upload-artifact@v2
         with:
-          name: linux-amd64
-          path: dist/**/*linux-amd64.tar.gz
+          name: bamboo-cctray-linux-amd64
+          path: bamboo-cctray-linux-amd64
       - uses: actions/upload-artifact@v2
         with:
-          name: darwin-amd64
-          path: dist/**/*darwin-amd64.tar.gz
+          name: bamboo-cctray-darwin-amd64
+          path: bamboo-cctray-darwin-amd64
       - uses: actions/upload-artifact@v2
         with:
-          name: darwin-arm64
-          path: dist/**/*darwin-arm64.tar.gz
+          name: bamboo-cctray-darwin-arm64
+          path: bamboo-cctray-darwin-arm64
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -43,6 +44,7 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            dist/**/*windows-amd64.tar.gz
-            dist/**/*linux-amd64.tar.gz
-            dist/**/*darwin-amd64.tar.gz
+            bamboo-cctray-windows-amd64
+            bamboo-cctray-linux-amd64
+            bamboo-cctray-darwin-amd64
+            bamboo-cctray-darwin-arm64
